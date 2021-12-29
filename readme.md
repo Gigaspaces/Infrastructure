@@ -1,1 +1,1 @@
-Hello ! welcome to giga infrastructure
+Hello ! welcome to GigaSpaces infrastructure
