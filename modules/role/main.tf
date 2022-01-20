@@ -86,7 +86,7 @@ data "aws_iam_policy_document" "eks-jenkins-policy" {
  
 }
 resource "aws_iam_policy" "policy" {
-  name = "giga-jenkins-eks-role"
+  name = var.policy_name
   policy = data.aws_iam_policy_document.eks-jenkins-policy.json
 }
 
@@ -99,7 +99,7 @@ module "iam_assumable_role_with_oidc" {
 
   create_role = true
   role_policy_arns = [aws_iam_policy.policy.arn]
-  role_name = "giga-eks-role"
+  role_name = var.role_name
 
   provider_url = var.oidc
   tags = {

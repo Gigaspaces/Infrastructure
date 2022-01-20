@@ -15,3 +15,10 @@ variable "allowed_zones" {
 variable "oidc"{
   default = ""
 }
+
+variable "role_name"{
+  default = ""
+}
+variable "policy_name"{
+  default = "iam_policy"
+}
