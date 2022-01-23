@@ -5,23 +5,20 @@ variable "tags" {
   default     = {}
 }
 
+
 variable "allowed_zones" {
   type = any
   default = ""
   description = "DNS ZONES ALLOWED"
 }
-
-
+variable "zone_id"{
+  
+  default = ""
+}
 variable "oidc"{
   default = ""
 }
 
-variable "role_name" {
-  
-  default     = ""
-  description = "Name of the role"
-}
-
-variable "policy_name"{
-  default = "iam_policy"
+variable "role_name"{
+  default = ""
 }

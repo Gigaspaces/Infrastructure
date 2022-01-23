@@ -8,6 +8,7 @@ variable "eks_cluster_name" {
   default     = ""
   description = "Name of the cluster"
 }
+
 variable "eks_subnets" {
   type        = any
   default     = ""
