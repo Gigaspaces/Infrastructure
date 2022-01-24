@@ -4,10 +4,10 @@ metadata:
   name: app-of-apps
   namespace: argocd
 spec:
-  project: GigaSpaces-dev
+  project: default
   source:
-    repoURL: git@github.com:Gigaspaces/xap-umbrella-chart.git
-    path: argocd
+    repoURL: ${repo_url}
+    path: ${path}
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc

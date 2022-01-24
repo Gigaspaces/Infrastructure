@@ -46,21 +46,21 @@ resource "helm_release" "argo-cd-GigaCI" {
   ]
 }
 
-data "aws_secretsmanager_secret" "argocd_ssh_key" {
-  name = "prod/infra/sshkey"
+data "aws_secretsmanager_secret" "ssh_argocd_giga" {
+  name = "ssh_argocd_giga"
 }
 
-data "aws_secretsmanager_secret_version" "argocd_ssh_key" {
-  secret_id = data.aws_secretsmanager_secret.argocd_ssh_key.id
+data "aws_secretsmanager_secret_version" "ssh_argocd_giga" {
+  secret_id = data.aws_secretsmanager_secret.ssh_argocd_giga.id
 }
 
 locals {
-  argocd_ssh_key_base64 = base64decode(data.aws_secretsmanager_secret_version.argocd_ssh_key.secret_string)
+  argocd_ssh_key_base64 = base64decode(data.aws_secretsmanager_secret_version.ssh_argocd_giga.secret_string)
 }
 
-resource "kubernetes_secret" "argocd_ssh_key" {
+resource "kubernetes_secret" "ssh_argocd_giga" {
   metadata {
-    name      = "GigaCI-ssh-key"
+    name      = "argocd-secret"
     namespace = kubernetes_namespace.argocd.metadata.0.name
   }
 
