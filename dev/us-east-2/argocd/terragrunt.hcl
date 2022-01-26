@@ -9,7 +9,7 @@ locals {
   env     = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   proj    = read_terragrunt_config(find_in_parent_folders("proj.hcl"))
 
-  secretPath = "prod/infra/sshkey"
+  # secretPath = "prod/infra/sshkey"
   # account
   account_name = local.account.locals.account_name
   account_id   = local.account.locals.aws_account_id
@@ -39,13 +39,16 @@ terraform {
 }
 
 inputs = {
-  cluster_name = local.cluster_name
-  cluster_id   = dependency.eks.outputs.cluster_id
+  cluster_name              = local.cluster_name
+  cluster_id                = dependency.eks.outputs.cluster_id
   # need to create key in aws secrets manager before execution
-  prod_infra_sshkey = local.secretPath
-  http                 = local.env.locals.http
-  repo_name_1          = local.env.locals.repo_name_1
-  repo_url_1           = local.env.locals.repo_url_1
-  app_of_apps_repo_url = local.env.locals.app_of_apps_repo_url
-  git_path             = local.env.locals.git_path
+  # prod_infra_sshkey         = local.secretPath
+  http                      = local.env.locals.http
+  repo_name_1               = local.env.locals.repo_name_1
+  repo_url_1                = local.env.locals.repo_url_1
+  app_of_apps_repo_url      = local.env.locals.app_of_apps_repo_url
+  git_path                  = local.env.locals.git_path
+  argo_ssh_key              = local.env.locals.argo_ssh_key
+  umbrella-github-secret    = local.env.locals.umbrella_ssh_key
+  app_of_apps_repo_name     = local.env.locals.app_of_apps_repo_name
 }

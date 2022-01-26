@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: ${repo_url}
+    repoURL: ${app_of_apps_repo_url}
     path: ${path}
     targetRevision: main
   destination:

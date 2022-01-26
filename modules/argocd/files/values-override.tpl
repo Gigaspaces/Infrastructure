@@ -74,9 +74,20 @@ server:
   config:
     url: ${argocd_url} 
     admin.enabled: "true"
-    
+    repositories: |-
 
-     
+      - name: ${app_of_apps_repo_name} 
+        type: git
+        url: ${app_of_apps_repo_url}
+        sshPrivateKeySecret:
+          key: sshPrivateKey
+          name: ${argo_ssh_key}
+      - name: ${repo_name_1} 
+        type: git
+        url: ${repo_url_1}
+        sshPrivateKeySecret:
+          key: sshPrivateKey
+          name: umbrella-github-secret 
   extraArgs:
       - --insecure
 # repoServer:
